@@ -1,0 +1,90 @@
+:root {
+    --labelWidth: 99.1mm;
+    --labelHeight: 33.9mm;
+}
+
+
+@media print { 
+    @page { 
+    size:21cm 29.7cm; /*A4*/ 
+    margin: 4mm; 
+    } 
+    html, body { border:0; margin:0; padding:0; } 
+    
+}  
+
+.page {
+    /* 양 옆 4mm, 총 8mm의 여백 값을 뺀 수치*/
+    width: 202mm;
+    height: 289mm;
+    display: table;
+    box-sizing: border-box;
+    border: 1px solid #4e546d;
+    border-radius: 4px;
+    page-break-before: always;
+    
+}
+
+.header {
+    width:202mm;
+    height:9mm;
+}
+
+.label {
+    width: var(--labelWidth);
+    height: var(--labelHeight);
+    float:left;
+    display: table;
+    box-sizing: border-box;
+    border: 1.0px solid #4e546d;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+
+.mid_margin {
+    width: 3mm;
+    height: var(--labelHeight);
+    float:left;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.footer {
+    width:202mm;
+    height:8.8mm;
+    clear:both;
+}
+
+.left {
+    clear:both;
+}
+
+.text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+p.address{
+    margin-bottom: 0.5rem;
+}
+p.name{
+    font-weight: bold;
+}
+p.zip{
+    text-align: right;
+    font-size: 1.2rem;
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+
