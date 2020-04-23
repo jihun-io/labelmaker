@@ -1,0 +1,12 @@
+https://labelmaker-ehlfr.run.goorm.io/labelmaker/print/index.html
+
+만들면서 참고하면 좋을 것 같은 링크들
+
+~~0. https://stackoverflow.com/questions/55244410/get-csv-into-array-using-jquery-csv~~
+
+1. [JavaScript] 부모창과 자식창의 값 전달
+https://all-record.tistory.com/149
+
+2. [HTML & CSS]table 안에 input, textarea 태그
+https://tastyloper.tistory.com/1
+

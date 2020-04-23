@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<title>3107 Labelmaker 인쇄 페이지</title>
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!--노토 산스 쓰고 발할라로 갑시다-->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    
+
+<style type="text/css" media="print">
+    /*출력 시 라벨의 테두리를 숨기는 코드*/
+    .line { border: 0px; }
+    .page { border: 0px; }
+</style>
+
+
+
+<script src="jquery.min.js"></script>
+
+<script>    
+    
+    var ABCD = ['A','B','C','D'];    
+    
+    function load(cell,i) {
+        return opener.document.getElementById('sjs-'+ABCD[i - 1]+ cell).innerHTML;
+    }
+    
+    
+    
+    
+    //라벨 추가 및 수정하는 함수
+    function addData(num, addressTXT, nameTXT, zipTXT, dear) {
+        if (dear == 1) {
+            document.getElementById('address' + num).innerHTML = addressTXT;
+            document.getElementById('name' + num).innerHTML = nameTXT + ' 귀하';
+            document.getElementById('zip' + num).innerHTML = zipTXT;
+            return(num + '번째 라벨 수정 완료!')
+        } else {
+            document.getElementById('address' + num).innerHTML = addressTXT;
+            document.getElementById('name' + num).innerHTML = nameTXT;
+            document.getElementById('zip' + num).innerHTML = zipTXT;
+            return(num + '번째 라벨 수정 완료!')
+        }
+
+    }
+
+    function delData(num) {
+        document.getElementById('address' + num).innerHTML = "";
+        document.getElementById('name' + num).innerHTML = "";
+        document.getElementById('zip' + num).innerHTML = "";
+        return(num + '번째 라벨이 삭제되었습니다.')
+    }
+    
+    //JQuery를 이용한 레이블 반복 생성 코드
+    $(function() {
+        j = 1;
+        
+        // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다.
+        labelNums = opener.document.getElementById('table').rows.length - 1;
+        
+        // 페이지 수를 구하는 조건문
+        if (labelNums % 16 == 0) {
+            page = parseInt(labelNums / 16);
+        } else {
+            page = parseInt(labelNums / 16) + 1;
+        }
+        console.log('총 페이지 수: ' + page)
+        console.log('라벨 개수: ' + labelNums)
+        
+        //페이지 단위로 생성하는 코드
+        for(pageCount = 1; pageCount <= page; pageCount++){
+            $("#begin").append('<div id="page'+pageCount+'" class="page"><div class="header" id="header'+pageCount+'"></div><div class="main" id="main'+pageCount+'">');
+            
+            // 줄 개수 구하는 조건문... 페이지가 남아있으면 8줄, 남아있지 않으면 나머지 줄을 띄움.
+            if (pageCount < page) {
+                row = 8;
+            } else {
+                if (labelNums % 2 == 0) {
+                    row = parseInt(labelNums / 2) - (page - 1) * 8
+                } else {
+                row = parseInt(labelNums / 2) + 1 - (page - 1) * 8;
+                }
+            }
+            console.log(pageCount + '페이지가 생성되었습니다.');
+                
+            // 라벨 열 단위로 생성하는 코드
+            for(i = 1; i <= row; i++){
+                $("#main"+pageCount).append('<div class="label line left" id="left' + j + '"><div class="text"><p class="address" id="address' + j + '"></p><p class="name" id="name' + j + '"></p><p class="zip" id="zip' + j + '"></p></div>');
+                
+                $("#main"+pageCount).append('<div class="mid_margin" id="mid_margin' + j + '"></div>');
+                
+                j = j + 1
+                
+                if (j <= labelNums) {
+                    $("#main"+pageCount).append('<div class="label line" id="right' + j + '"><div class="text"><p class="address" id="address' + j + '"></p><p class="name" id="name' + j + '"></p><p class="zip" id="zip' + j + '"></p></div>');
+                
+                    j = j + 1
+                }
+                
+                
+                
+            }
+            
+            $("#page"+pageCount).append('</div><div class="footer" id="footer'+pageCount+'"></div>');
+            console.log(pageCount + '페이지에서 ' + (j - 1) + '개의 라벨이 생성되었습니다.');
+        }
+        console.log("라벨 생성 완료!\n총 " + (pageCount-1) + "페이지 / 라벨 " + (j-1) + "개\n\n라벨 편집 방법: addData(라벨번호,주소,이름,우편번호,[귀하 유무]);");
+        
+        
+        for (addCount = 2; addCount <= labelNums + 1; addCount++) {
+            
+            addData(addCount - 1,load(addCount,2),load(addCount,1),load(addCount,3));
+                
+        }
+            
+        print();
+        
+        
+    });
+
+</script>
+
+    
+</head>
+    
+<body id="begin">
+</body>
+    
+</html>
