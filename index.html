@@ -151,6 +151,13 @@ function get_header_row(sheet) {
 
         
         function printLabel() {
+            chk1 = document.getElementById("firstrow").checked;
+            
+            if (document.getElementById("savelabel").checked == true) {
+                emptyLabel = document.getElementById("printMin").value;
+            }
+            
+            
             makeTableID();
             openChild();
             
@@ -166,59 +173,47 @@ function get_header_row(sheet) {
 </head>
 <body>
 <div id="wrap">
-        <div id="top">
-            <p class="title">
-                LABLEMAKER for 3107
-                </p>
-            <!--
-            <div id="topleft">
-                <p class="title">
-                LABLEMAKER for 3107
-                </p>
-            </div>
-            <div id="topright">
-                <div id="excel" class="links">
-                    <p class="mainlink">
-                        엑셀 불러오기
-                    </p>
-                </div>
-                <div id="write" class="links">
-                    <p class="mainlink" >
-                        직접 작성하기
-                    </p>
-                </div>
-            -->
-            </div>
+    <div id="top">
+        <p class="title">
+            LABLEMAKER for 3107
+        </p>
+    </div>
+    <div id="main">
+        <p>주소록이 작성된 엑셀 파일을 첨부하십시오. 데이터는 서버에 저장되지  않습니다. <a href="./test3.xlsx">예제 파일</a></p>
+        <p>(시트에서 열을 이름 / 주소 / 우편번호로 맞춰서 작성해야 합니다)</p>
+        <p>이 웹사이트는 안타깝게도 크롬에 최적화되어 있습니다.</p>
+
+        <div id="fileselect">
+           <input type="file" id="excelFile" onchange="excelExport(event)"> 
         </div>
-        <div id="main">
-            <p>주소록이 작성된 엑셀 파일을 첨부하십시오. 데이터는 서버에 저장되지  않습니다. <a href="../example/test3.xlsx">예제 파일</a></p>
-            <p>(시트에서 열을 이름 / 주소 / 우편번호로 맞춰서 작성해야 합니다)</p>
-            
-
-                <input type="file" id="excelFile" onchange="excelExport(event)">
-
-            
+        <div id="printbutton">
             <label>인쇄 영역: </label>
             <input type="number" class="textbox" id="printMin" value="1">
             <label>~</label>
             <input type="number" class="textbox" id="printMax" value="1">
             <input type="button" class="button" name="test" value="인쇄" onclick="printLabel()">
+        </div>
+        <div id="checkers">
+            <label><input type="checkbox" class="checkbox" id="firstrow">데이터의 첫 열을 출력하기</label>
             <br>
-            <label><input type="checkbox" class="checkbox" name="checking" value="firstrow">데이터의 첫 열을 출력하기</label>
+            <label><input type="checkbox" class="checkbox" id="savelabel">라벨 절약 모드 (입력한 만큼 공백의 라벨을 출력합니다)</label><input type="number" class="textbox" id="printMin" value="0">
             <br>
-            <label><input type="checkbox" class="checkbox" name="checking" value="savelabel">라벨 절약 모드 (입력한 만큼 공백의 라벨을 출력합니다)</label><input type="number" class="textbox" id="printMin" value="0">
-            <br>
-            <label><input type="checkbox" class="checkbox" name="checking" value="sender">매 줄마다 보내는 사람 주소 출력</label><br>
+            <label><input type="checkbox" class="checkbox" id="sender">매 줄마다 보내는 사람 주소 출력</label><br>
             <input type="text" class="textbox tName" id="tName" placeholder="이름">
             <input type="text" class="textbox tAddress" id="tAddress" placeholder="주소">
             <input type="text" class="textbox tPhone" id="tPhone" placeholder="전화번호">
-            <hr>
-            <div id="displayExcelHtml"></div>
-    
-    
-        
-    </div>
+        </div>
 
+
+
+
+        <hr>
+        <div id="displayExcelHtml"></div>
+
+
+
+    </div>
+</div>
     
     
        

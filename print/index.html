@@ -61,8 +61,17 @@
     $(function() {
         j = 1;
         
-        // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다.
-        labelNums = opener.document.getElementById('table').rows.length - 1;
+        // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다. 
+        // 만약 부모 창에서 '첫 열 출력하기'가 체크되어 있지 않다면 값에서 1을 뺍니다.
+        if (opener.window.chk1 == true) {
+            labelNums = opener.document.getElementById('table').rows.length;
+        } else {
+           labelNums = opener.document.getElementById('table').rows.length - 1; 
+        }
+        
+        
+        
+        
         
         // 페이지 수를 구하는 조건문
         if (labelNums % 16 == 0) {
@@ -113,12 +122,17 @@
         console.log("라벨 생성 완료!\n총 " + (pageCount-1) + "페이지 / 라벨 " + (j-1) + "개\n\n라벨 편집 방법: addData(라벨번호,주소,이름,우편번호,[귀하 유무]);");
         
         
-        for (addCount = 2; addCount <= labelNums + 1; addCount++) {
-            
-            addData(addCount - 1,load(addCount,2),load(addCount,1),load(addCount,3));
-                
+        
+        if (opener.window.chk1 == true) {
+            for (addCount = 1; addCount <= labelNums + 1; addCount++) {
+                addData(addCount,load(addCount,2),load(addCount,1),load(addCount,3));
+            }
+        } else {
+           for (addCount = 2; addCount <= labelNums + 1; addCount++) {
+                addData(addCount - 1,load(addCount,2),load(addCount,1),load(addCount,3)); 
+            }
         }
-            
+        
         print();
         
         

@@ -82,8 +82,8 @@ p.name{
 }
 p.zip{
     text-align: right;
-    font-size: 1.2rem;
-    font-family: 'Source Code Pro', monospace;
+    /*font-size: 1.2rem;
+    font-family: 'Source Code Pro', monospace;*/
 }
 
 
