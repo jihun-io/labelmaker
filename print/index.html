@@ -24,15 +24,14 @@
 <script src="jquery.min.js"></script>
 
 <script>    
-    
+    // 부모 창에서 데이터 값을 불러오는 함수
     var ABCD = ['A','B','C','D'];    
     
     function load(cell,i) {
         return opener.document.getElementById('sjs-'+ABCD[i - 1]+ cell).innerHTML;
     }
     
-    
-    
+
     
     //라벨 추가 및 수정하는 함수
     function addData(num, addressTXT, nameTXT, zipTXT, dear) {
@@ -57,18 +56,24 @@
         return(num + '번째 라벨이 삭제되었습니다.')
     }
     
+
+    
     //JQuery를 이용한 레이블 반복 생성 코드
     $(function() {
         j = 1;
         
         // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다. 
         // 만약 부모 창에서 '첫 열 출력하기'가 체크되어 있지 않다면 값에서 1을 뺍니다.
+        // 만약 보내는 사람 주소 출력이 체크되어 있다면 값에 2를 곱합니다.
         if (opener.window.chk1 == true) {
             labelNums = opener.document.getElementById('table').rows.length;
         } else {
            labelNums = opener.document.getElementById('table').rows.length - 1; 
         }
         
+        if (opener.window.chk3 == true) {
+            labelNums = labelNums * 2;
+        }
         
         
         
@@ -100,12 +105,15 @@
                 
             // 라벨 열 단위로 생성하는 코드
             for(i = 1; i <= row; i++){
+                //좌측 생성
+                
                 $("#main"+pageCount).append('<div class="label line left" id="left' + j + '"><div class="text"><p class="address" id="address' + j + '"></p><p class="name" id="name' + j + '"></p><p class="zip" id="zip' + j + '"></p></div>');
                 
+                //여백 생성하고 카운트 1을 더함
                 $("#main"+pageCount).append('<div class="mid_margin" id="mid_margin' + j + '"></div>');
-                
                 j = j + 1
                 
+                //우측 생성
                 if (j <= labelNums) {
                     $("#main"+pageCount).append('<div class="label line" id="right' + j + '"><div class="text"><p class="address" id="address' + j + '"></p><p class="name" id="name' + j + '"></p><p class="zip" id="zip' + j + '"></p></div>');
                 
@@ -122,15 +130,36 @@
         console.log("라벨 생성 완료!\n총 " + (pageCount-1) + "페이지 / 라벨 " + (j-1) + "개\n\n라벨 편집 방법: addData(라벨번호,주소,이름,우편번호,[귀하 유무]);");
         
         
+    //부모 창의 데이터대로 라벨의 내용을 바꿔주는 코드
+        
+        //첫열 출력 모드가 true일 경우 첫 열을 출력함. 보내는 사람 주소 출력이 체크돼있을 경우
+        
         
         if (opener.window.chk1 == true) {
-            for (addCount = 1; addCount <= labelNums; addCount++) {
-                addData(addCount,load(addCount,2),load(addCount,1),load(addCount,3));
-            }
+            adcStart = 1;
+            adcMinus = 0;
         } else {
-           for (addCount = 2; addCount <= labelNums + 1; addCount++) {
-                addData(addCount - 1,load(addCount,2),load(addCount,1),load(addCount,3)); 
+            adcStart = 2;
+            labelNums = labelNums + 1;
+            adcMinus = 1;
+        }
+        
+        if (opener.window.chk3 == true) {
+            labNDivide = 2;
+        } else {
+            labNDivide = 1;
+        }
+        
+        for (addCount = adcStart; addCount <= labelNums / labNDivide; addCount++) {
+            if (opener.window.chk3 == true) {
+                addNumber = (addCount - adcMinus) * 2;
+                addData(addNumber - 1,opener.window.senderAddress,opener.window.senderName,opener.window.senderPhone);
+            } else { 
+                addNumber = (addCount - adcMinus); 
             }
+            
+            addData(addNumber,load(addCount,2),load(addCount,1),load(addCount,3));
+            
         }
         
         print();
