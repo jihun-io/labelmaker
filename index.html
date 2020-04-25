@@ -49,7 +49,8 @@
             openWin = window.open("./print/index.html",
                     "print", "width=800, height=480, resizable = no, scrollbars = no");
         }
-                
+        
+        //인쇄
         function printLabel() {
             // 체크값을 변수로
             chk1 = document.getElementById("firstrow").checked;
@@ -58,7 +59,7 @@
             
             // 라벨 절약 모드
             if (document.getElementById("savelabel").checked == true) {
-                emptyLabel = document.getElementById("printMin").value;
+                emptyLabel = document.getElementById("emptyLabel").value;
             }                
             // 보내는 사람 출력
             if (document.getElementById("sender").checked == true) {
@@ -80,7 +81,7 @@
 </head>
 <body>
 <div id="wrap">
-    <div id="top">
+    <div id="header">
         <p class="title">
             LABLEMAKER for 3107
         </p>
@@ -103,7 +104,7 @@
         <div id="checkers">
             <label><input type="checkbox" class="checkbox" id="firstrow">데이터의 첫 열을 출력하기</label>
             <br>
-            <label><input type="checkbox" class="checkbox" id="savelabel">라벨 절약 모드 (입력한 만큼 공백의 라벨을 출력합니다)</label><input type="number" class="textbox" id="printMin" value="0">
+            <label><input type="checkbox" class="checkbox" id="savelabel">라벨 절약 모드 (입력한 만큼 공백의 라벨을 출력합니다)</label><input type="number" class="textbox" id="emptyLabel" value="0">
             <br>
             <label><input type="checkbox" class="checkbox" id="sender">매 줄마다 보내는 사람 주소 출력</label><br>
             <input type="text" class="textbox tName" id="tName" placeholder="이름">
@@ -120,7 +121,10 @@
 
 
     </div>
+    <div id="footer"> </div>
 </div>
+    
+
     
     
        
