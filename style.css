@@ -30,6 +30,7 @@
 
 #displayExcelHtml {
     height: 500px;
+    overflow:auto;
 }
 
 #fileselect {
