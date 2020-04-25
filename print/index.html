@@ -132,9 +132,8 @@
         
     //부모 창의 데이터대로 라벨의 내용을 바꿔주는 코드
         
-        //첫열 출력 모드가 true일 경우 첫 열을 출력함. 보내는 사람 주소 출력이 체크돼있을 경우
         
-        
+        //첫열 출력 모드가 true일 경우 시작 열을 1로 설정, false일 경우 시작 열을 2로 설정
         if (opener.window.chk1 == true) {
             adcStart = 1;
             adcMinus = 0;
@@ -144,20 +143,23 @@
             adcMinus = 1;
         }
         
+        //보내는 사람 주소 출력 모드일 경우 레이블 출력 수를 2로 나눔
         if (opener.window.chk3 == true) {
             labNDivide = 2;
         } else {
             labNDivide = 1;
         }
         
+        
         for (addCount = adcStart; addCount <= labelNums / labNDivide; addCount++) {
+            //보내는 사람 주소 출력 모드일 경우 좌측 레이블의 내용을 모두 보내는 사람 주소로 채움
             if (opener.window.chk3 == true) {
                 addNumber = (addCount - adcMinus) * 2;
                 addData(addNumber - 1,opener.window.senderAddress,opener.window.senderName,opener.window.senderPhone);
             } else { 
                 addNumber = (addCount - adcMinus); 
-            }
-            
+            }    
+            //부모 창의 데이터를 불러와서 출력
             addData(addNumber,load(addCount,2),load(addCount,1),load(addCount,3));
             
         }
