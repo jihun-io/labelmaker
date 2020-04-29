@@ -35,18 +35,14 @@
     
     //라벨 추가 및 수정하는 함수
     function addData(num, addressTXT, nameTXT, zipTXT, dear) {
+        document.getElementById('address' + num).innerHTML = addressTXT;
+        document.getElementById('zip' + num).innerHTML = zipTXT;
         if (dear == 1) {
-            document.getElementById('address' + num).innerHTML = addressTXT;
             document.getElementById('name' + num).innerHTML = nameTXT + ' 귀하';
-            document.getElementById('zip' + num).innerHTML = zipTXT;
-            return(num + '번째 라벨 수정 완료!')
         } else {
-            document.getElementById('address' + num).innerHTML = addressTXT;
-            document.getElementById('name' + num).innerHTML = nameTXT;
-            document.getElementById('zip' + num).innerHTML = zipTXT;
-            return(num + '번째 라벨 수정 완료!')
+            document.getElementById('name' + num).innerHTML = nameTXT;            
         }
-
+        return(num + '번째 라벨 수정 완료!')
     }
 
     function delData(num) {
@@ -160,7 +156,7 @@
                 addNumber = (addCount - adcMinus); 
             }    
             //부모 창의 데이터를 불러와서 출력
-            addData(addNumber,load(addCount,2),load(addCount,1),load(addCount,3));
+            addData(addNumber,load(addCount,2),load(addCount,1),load(addCount,3),opener.window.dear);
             
         }
         
