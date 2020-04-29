@@ -17,9 +17,13 @@
 
 #main {
     width: 960px;
-    height: 100%;
+    height: 720px;
     margin:0 auto;
     clear:both;
+}
+
+#main-text {
+    text-align: center;
 }
 
 #midmargin{
@@ -28,8 +32,14 @@
     height: 50px;
 }
 
+#buttons {
+    width: 70%;
+    height: 30px;
+    margin:0 auto;
+}
+
 #displayExcelHtml {
-    height: 500px;
+    height: 420px;
     overflow:auto;
 }
 
@@ -46,8 +56,11 @@
 
 #checkers {
     clear: both;
-    width: 100%;
+    width: 70%;
+    height: 160px;
+    margin:0 auto;
 }
+
 
 
 .title {
@@ -67,23 +80,22 @@ p {
 }
 
 
- table {
+table {
     width: 100%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
-  }
-  th, td {
+}
+th, td {
     border-bottom: 1px solid #444444;
-    padding: 10px;
-  }
-
+    padding: 10px;    
+}
 
 
 
 
 .textbox {
     width: 30px;
-    height: 1.3rem;
+    height: 15px;
     margin: 3px;
 }
 
@@ -95,4 +107,12 @@ p {
 }
 .tPhone {
     width: 100px;
+}
+
+.checkbox-row {
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    float: left;
+    clear: both;
 }
