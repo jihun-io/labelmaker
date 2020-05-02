@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <!--노토 산스 쓰고 발할라로 갑시다-->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     
 
 <style type="text/css" media="print">
@@ -60,16 +60,26 @@
         
         // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다. 
         // 만약 부모 창에서 '첫 열 출력하기'가 체크되어 있지 않다면 값에서 1을 뺍니다.
-        // 만약 보내는 사람 주소 출력이 체크되어 있다면 값에 2를 곱합니다.
         if (opener.window.chk1 == true) {
             labelNums = opener.document.getElementById('table').rows.length;
         } else {
            labelNums = opener.document.getElementById('table').rows.length - 1; 
         }
         
+        // 만약 보내는 사람 주소 출력이 체크되어 있다면 값에 2를 곱합니다.
         if (opener.window.chk3 == true) {
             labelNums = labelNums * 2;
         }
+        
+        // 공백 라벨 수만큼 총 레이블 수를 더합니다.
+        if (opener.window.chk2 == true) {
+            emptyLabel = parseInt(opener.window.emptyLabel);
+            labelNums = labelNums + parseInt(opener.window.emptyLabel);
+        } else {
+            emptyLabel = 0;
+        }
+        
+
         
         
         
@@ -80,8 +90,15 @@
         } else {
             page = parseInt(labelNums / 16) + 1;
         }
+        
+        if (opener.window.chk2 == true) {
+            console.log('공백 라벨의 개수: ' + parseInt(opener.window.emptyLabel))
+            console.log('라벨 개수: ' + parseInt(labelNums - opener.window.emptyLabel))
+        } else {console.log('라벨 개수: ' + labelNums)}
+        console.log('총 라벨 개수: ' + labelNums)
         console.log('총 페이지 수: ' + page)
-        console.log('라벨 개수: ' + labelNums)
+        
+        
         
         //페이지 단위로 생성하는 코드
         for(pageCount = 1; pageCount <= page; pageCount++){
@@ -139,6 +156,11 @@
             adcMinus = 1;
         }
         
+        // 공백 라벨 출력 모드가 켜져있을 경우 공백 라벨만큼 labelNums에 값을 뺌
+        if (opener.window.chk2 == true) {
+            labelNums = labelNums - parseInt(opener.window.emptyLabel);
+        }
+        
         //보내는 사람 주소 출력 모드일 경우 레이블 출력 수를 2로 나눔
         if (opener.window.chk3 == true) {
             labNDivide = 2;
@@ -147,18 +169,25 @@
         }
         
         
-        for (addCount = adcStart; addCount <= labelNums / labNDivide; addCount++) {
+        for (addCount = adcStart; addCount <= (labelNums / labNDivide) + labNDivide - 1; addCount++) {
             //보내는 사람 주소 출력 모드일 경우 좌측 레이블의 내용을 모두 보내는 사람 주소로 채움
             if (opener.window.chk3 == true) {
-                addNumber = (addCount - adcMinus) * 2;
+                
+                addNumber = parseInt((addCount - adcMinus) * 2) + emptyLabel ;
                 addData(addNumber - 1,opener.window.senderAddress,opener.window.senderName,opener.window.senderPhone);
             } else { 
-                addNumber = (addCount - adcMinus); 
+                addNumber = (addCount - adcMinus) + emptyLabel; 
             }    
+            
+            
+            
+            
             //부모 창의 데이터를 불러와서 출력
             addData(addNumber,load(addCount,2),load(addCount,1),load(addCount,3),opener.window.dear);
             
         }
+        
+        
         
         print();
         
