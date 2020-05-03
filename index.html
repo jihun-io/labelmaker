@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="bulma.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 
 
@@ -22,72 +24,102 @@
     <div id="wrap">
         
         <div id="header">
-            <p class="title">
-                Labelmaker for 3107
-            </p>
+            <div id="brand" class="brand">
+               <p style="font-family: 'Comfortaa', cursive;">Labelmaker for 3107</p> 
+            </div>
+            
         </div>
         
         <div id="main">
-            <div id="main-text">
-                <p>주소록이 작성된 시트를 첨부하십시오. 데이터는 서버에 저장되지 않습니다. <a href="./test3.xlsx">예제 파일</a></p>
-                <p>(시트에서 열을 이름 / 주소 / 전화번호로 맞춰서 작성해야 합니다)</p>
-            </div>
-            <div id="form">
-                <div id="buttons">
-                    <div id="fileselect">
-                   <input type="file" id="excelFile" accept=".xlsx, .xls, .cell" onchange="excelExport(event)"> 
-                </div>
-                <div id="printbutton">
-                    <label>인쇄 영역: </label>
-                    <input type="number" class="textbox" id="printMin" value="1">
-                    <label>~</label>
-                    <input type="number" class="textbox" id="printMax" value="1">
-                    <input type="button" class="button" name="test" value="인쇄" onclick="printLabel()">
-                </div>
-                </div>
-
-
-                <div id="checkers">
-                    <div id="check1" class="checkbox-row">
-                        <div>
-                            <label><input type="checkbox" class="checkbox" id="firstrow">데이터의 첫 열을 출력하기</label>
-                        </div>
-                    </div>
-                    <div id="check2" class="checkbox-row">
-                        <div>
-                            <label><input type="checkbox" class="checkbox" id="dear">이름 옆에 귀하 붙이기</label>
-                        </div>
-                    </div>
-                    <div id="check3" class="checkbox-row">
-                        <div>
-                            <label><input type="checkbox" class="checkbox" id="savelabel">공백 라벨 출력 </label><input type="number" class="textbox" id="emptyLabel" value="0" min="0" max="15">
-                        </div>
-                    </div>
-                    <div id="check4" class="checkbox-row">
-                        <div>
-                            <label><input type="checkbox" class="checkbox" id="sender">매 줄마다 보내는 사람 주소 출력</label>
-                        </div>
-                    </div>
-                    <div id="check5" class="checkbox-row">
-                        <div>
-
-                            <input type="text" class="textbox tName" id="tName" placeholder="이름">
-                            <input type="text" class="textbox tAddress" id="tAddress" placeholder="주소">
-                            <input type="text" class="textbox tPhone" id="tPhone" placeholder="전화번호">
-
-                        </div>
+            <div id="contents">
+                <div id="main-text">
+                    <p>주소록이 작성된 시트를 첨부하십시오. 데이터는 서버에 저장되지 않습니다. </p>
+                    <p>(시트에서 열을 이름 / 주소 / 전화번호로 맞춰서 작성해야 합니다. <a href="./test3.xlsx">예제 파일</a>)</p>
+                    <div id="upload" class="file has-name is-boxed">
+                      <label class="file-label" style="margin: 10px auto;">
+                        <input class="file-input" type="file" id="excelFile" accept=".xlsx, .xls, .cell" name="resume">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            파일을 선택해주세요...
+                          </span>
+                        </span>
+                        <span class="file-name">
+                          선택된 파일 없음
+                        </span>
+                            <script>
+                              const fileInput = document.querySelector('#upload input[type=file]');
+                              fileInput.onchange = () => {
+                                if (fileInput.files.length > 0) {
+                                  const fileName = document.querySelector('#upload .file-name');
+                                  fileName.textContent = fileInput.files[0].name;
+                                }
+                                excelExport(event)
+                              }
+                            </script>
+                      </label>
                     </div>
                 </div>
             </div>
+            <div id="features">
+                <hr>
+                <div id="displayExcelHtml"></div>
+                <div id="sidebar">
+                    <div id="form">
+                        <div id="buttons">
+                            <div id="printbutton">
+                                <input type="button" class="button is-primary" name="test" value="인쇄" onclick="printLabel()">
+                            </div>
+                        </div>
 
 
+                        <div id="checkers">
+                            <div id="check1" class="checkbox-row">
+                                <div>
+                                    <label><input type="checkbox" class="checkbox" id="firstrow">시트의 첫 열을 출력하기</label>
+                                </div>
+                            </div>
+                            <div id="check2" class="checkbox-row">
+                                <div>
+                                    <label><input type="checkbox" class="checkbox" id="dear">이름 옆에 귀하 붙이기</label>
+                                </div>
+                            </div>
+                            <div id="check3" class="checkbox-row">
+                                <div>
+                                    <label><input type="checkbox" class="checkbox" id="savelabel">빈 라벨 출력 </label><input type="number" class="textbox" id="emptyLabel" value="0" min="0" max="15">
+                                </div>
+                            </div>
+                            <div id="check4" class="checkbox-row">
+                                <div>
+                                    <label><input type="checkbox" class="checkbox" id="sender">매 줄마다 보내는 사람 주소 출력</label>
+                                </div>
+                            </div>
+                            <div id="check5" class="checkbox-row">
+                                <div>
 
-            <hr>
-            <div id="displayExcelHtml"></div>
+                                    <input type="text" class="input tName" id="tName" placeholder="이름">
+                                    <input type="text" class="input tAddress" id="tAddress" placeholder="주소">
+                                    <input type="text" class="input tPhone" id="tPhone" placeholder="전화번호">
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+        </div>
+            
+            
 
 
 
         </div>
+        
+        
         
         <div id="footer">
             <p>이 웹사이트는 안타깝게도 크롬에 최적화되어 있습니다.</p>

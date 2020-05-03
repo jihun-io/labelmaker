@@ -8,7 +8,7 @@ function load(cell,i) {
 
 //table 태그에 table 아이디를 만드는 함수
 function makeTableID(){
-    document.getElementsByTagName('table')[0].id="table"
+    document.getElementsByTagName('table')[0].id="table";
     console.log("table 태그에 table 아이디 생성 완료")
 }
 
@@ -24,6 +24,11 @@ function checkerror() {
         alert("올바른 시트 파일을 첨부해주세요.");
     }
 }
+
+function firstrow_color() {
+    document.getElementsByTagName('tr')[0].id="firsttr";
+}
+
 
 //인쇄 창 여는 함수
 var openWin;
