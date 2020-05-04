@@ -29,7 +29,7 @@
     height: calc(100% - 1.5rem);
     overflow:auto;
     float: left;
-    background-color: #f5f5f5;
+    background-color: #fcfcfc;
 }
 
 #sidebar {
@@ -113,14 +113,14 @@ p {
 
 table {
     width: 100%;
-    border-top: 1px solid #444444;
+    border-top: 1px solid #c2c2c2;
     border-collapse: collapse;
 }
 
 
 
 th, td {
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid #c2c2c2;
     padding: 10px;    
 }
 
@@ -141,11 +141,11 @@ td[id^='sjs-C'] {
 }
 
 td.write-mode[id^='sjs-A'] {
-    border-right: 1px solid #4a4a4a;
+    border-right: 1px solid #c2c2c2;
 }
 
 td.write-mode[id^='sjs-B'] {
-    border-right: 1px solid #4a4a4a;
+    border-right: 1px solid #c2c2c2;
 }
 
 
@@ -189,6 +189,10 @@ td.write-mode[id^='sjs-B'] {
 }
 .tPhone {
     width: 100px;
+}
+
+.file-name {
+    text-align: center;
 }
 
 .checkbox-row {
