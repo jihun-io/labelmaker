@@ -35,37 +35,90 @@
                 <div id="main-text">
                     <p>주소록이 작성된 시트를 첨부하십시오. 데이터는 서버에 저장되지 않습니다. </p>
                     <p>(시트에서 열을 이름 / 주소 / 전화번호로 맞춰서 작성해야 합니다. <a href="./test3.xlsx">예제 파일</a>)</p>
-                    <div id="upload" class="file has-name is-boxed">
-                      <label class="file-label" style="margin: 10px auto;">
-                        <input class="file-input" type="file" id="excelFile" accept=".xlsx, .xls, .cell" name="resume">
-                        <span class="file-cta">
-                          <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                          </span>
-                          <span class="file-label">
-                            파일을 선택해주세요...
-                          </span>
-                        </span>
-                        <span class="file-name">
-                          선택된 파일 없음
-                        </span>
-                            <script>
-                              const fileInput = document.querySelector('#upload input[type=file]');
-                              fileInput.onchange = () => {
-                                if (fileInput.files.length > 0) {
-                                  const fileName = document.querySelector('#upload .file-name');
-                                  fileName.textContent = fileInput.files[0].name;
-                                }
-                                excelExport(event)
-                              }
-                            </script>
-                      </label>
+                    <div id="upload-and-write">
+                        <div id="upload" class="file has-name is-boxed">
+                            <label class="file-label" style="margin: 10px auto;">
+                            <input class="file-input" type="file" id="excelFile" accept=".xlsx, .xls, .cell" name="resume">
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                              </span>
+                              <span class="file-label">파일을 올려주세요…</span>
+                            </span>
+                            <span class="file-name">선택된 파일 없음</span>
+                                <script>
+                                  const fileInput = document.querySelector('#upload input[type=file]');
+                                  fileInput.onchange = () => {
+                                    if (fileInput.files.length > 0) {
+                                      const fileName = document.querySelector('#upload .file-name');
+                                      fileName.textContent = fileInput.files[0].name;
+                                    }
+                                    excelExport(event)
+                                  }
+                                </script>
+                            </label>
+                        </div>
                     </div>
+                        
+                    
                 </div>
             </div>
             <div id="features">
                 <hr>
-                <div id="displayExcelHtml"></div>
+                <div id="displayExcelHtml">
+                    <meta charset="utf-8">
+                    <title>SheetJS Table Export</title>
+                    <table class="table-write-mode">
+                    <tbody class="">
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A1">이름</td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B1">주소</td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C1">전화번호</td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A2"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B2"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C2"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A3"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B3"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C3"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A4"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B4"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C4"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A5"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B5"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C5"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A6"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B6"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C6"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A7"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B7"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C7"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A8"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B8"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C8"></td>
+                    </tr>
+                    <tr class="write-mode">
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A9"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B9"></td>
+                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C9"></td>
+                    </tr>
+                    </tbody>
+                    </table>
+
+                </div>
                 <div id="sidebar">
                     <div id="form">
                         <div id="buttons">

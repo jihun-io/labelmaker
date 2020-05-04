@@ -1,6 +1,7 @@
 #wrap{
     width:100%;
     height:100%;
+    min-width: 960px;
 }
 
 #header {
@@ -89,6 +90,7 @@
     height: 75%;
     clear: both;
     margin: 0 auto;
+    max-width: 1024px;
 }
 
 #brand {
@@ -114,8 +116,11 @@ table {
     border-top: 1px solid #444444;
     border-collapse: collapse;
 }
+
+
+
 th, td {
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #4a4a4a;
     padding: 10px;    
 }
 
@@ -131,16 +136,50 @@ td[id^='sjs-C'] {
   width: 20%; 
   }
 
+.write-mode {
+    height: 45px;
+}
+
+td.write-mode[id^='sjs-A'] {
+    border-right: 1px solid #4a4a4a;
+}
+
+td.write-mode[id^='sjs-B'] {
+    border-right: 1px solid #4a4a4a;
+}
+
+
 #firsttr {
     background-color: #DDD;
 }
 
 
+
+
 #upload {
-    width: 100%;
+    width: 600px;
     height: 100%;
     margin: 0 auto;
 }
+
+#upload-and-write {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    float: left;
+}
+
+
+#write {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    float: left;
+    display:table-cell;
+    vertical-align:middle;
+}
+
+
 
 .tName {
     width: 120px;
