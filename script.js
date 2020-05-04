@@ -1,25 +1,47 @@
 
 //매개변수에 입력한 해당 셀 주소의 값을 데이터 테이블에서 가져오는 함수
 //예시: load(1,1)일 경우 A1(아이디 sjs-A1)을 호출함~
-var ABCD = ['A','B','C','D'];    
+var ABCD = ['A','B','C','D'];   
+
 function load(cell,i) {
     console.log(document.getElementById('sjs-'+ABCD[i - 1]+ cell).innerHTML);
 }
 
-//table 태그에 table 아이디를 만드는 함수
+//table 태그에 table 아이디를 만드는 함수 (calcEmpty로 대체되어 이제 안 씀)
 function makeTableID(){
     document.getElementsByTagName('table')[0].id="table";
     console.log("table 태그에 table 아이디 생성 완료")
 }
 
 
-//몇 줄인지 체크하는 함수 (개발용)
-function checkrows() {
-    rowNum = document.getElementById('table').rows.length;
-    console.log("생성 완료! "+rowNum+"줄입니다.");
+//실제 데이터가 몇 줄인지 체크하는 함수
+function calcEmpty() {
+    sheet_row = document.getElementsByTagName('table')[0].rows.length;
+    for (data_row = sheet_row; data_row > 1; data_row--) {
+        if (document.getElementById("sjs-A"+data_row).innerHTML != ""){
+            break;
+        }
+    }
+    console.log("이 시트의 데이터는 "+data_row+"행까지 있습니다.");
 }
 
-function checkerror() {
+//불러온 시트를 수정할 수 있게 만드는 함수
+function sheet_modify(){
+    sheet_row = document.getElementsByTagName('table')[0].rows.length;
+    for (row = 1; row <= sheet_row; row++){
+        document.getElementById("sjs-A"+row).setAttribute('contenteditable', 'true');
+        document.getElementById("sjs-A"+row).setAttribute('class', 'write-mode');
+        document.getElementById("sjs-B"+row).setAttribute('contenteditable', 'true');
+        document.getElementById("sjs-B"+row).setAttribute('class', 'write-mode');
+        document.getElementById("sjs-C"+row).setAttribute('contenteditable', 'true');
+        document.getElementById("sjs-C"+row).setAttribute('class', 'write-mode');
+    }
+}
+
+
+
+
+function no_data_check() {
     if (document.getElementsByTagName('table')[0] == undefined) {
         alert("올바른 시트 파일을 첨부해주세요.");
     }
@@ -33,9 +55,7 @@ function firstrow_color() {
 //인쇄 창 여는 함수
 var openWin;
 function openChild() {
-    // window.name = "부모창 이름"; 
     window.name = "main";
-    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
     openWin = window.open("./print/index.html",
             "print", "width=800, height=600, resizable = no, scrollbars = no");
 }
@@ -63,8 +83,9 @@ function printLabel() {
             senderPhone = document.getElementById("tPhone").value;
         }
 
-        if (checkerror() != 1) {
-            makeTableID();
+        if (no_data_check() != 1) {
+            //makeTableID();
+            calcEmpty();
             openChild();     
         }
     }

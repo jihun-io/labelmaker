@@ -33,9 +33,9 @@ $(function() {
     // labelNums 값은 레이블의 개수입니다. 부모 창에서의 테이블 줄 수를 가져옵니다. 
     // 만약 부모 창에서 '첫 열 출력하기'가 체크되어 있지 않다면 값에서 1을 뺍니다.
     if (opener.window.chk1 == true) {
-        labelNums = opener.document.getElementById('table').rows.length;
+        labelNums = opener.window.data_row;
     } else {
-       labelNums = opener.document.getElementById('table').rows.length - 1; 
+       labelNums = opener.window.data_row - 1; 
     }
 
     // 만약 보내는 사람 주소 출력이 체크되어 있다면 값에 2를 곱합니다.

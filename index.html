@@ -53,7 +53,7 @@
                                       const fileName = document.querySelector('#upload .file-name');
                                       fileName.textContent = fileInput.files[0].name;
                                     }
-                                    excelExport(event)
+                                    excelExport(event);
                                   }
                                 </script>
                             </label>
@@ -71,51 +71,112 @@
                     <table class="table-write-mode">
                     <tbody class="">
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A1">이름</td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B1">주소</td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C1">전화번호</td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A1">이름</td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B1">주소</td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C1">전화번호</td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A2"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B2"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C2"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A2"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B2"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C2"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A3"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B3"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C3"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A3"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B3"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C3"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A4"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B4"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C4"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A4"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B4"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C4"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A5"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B5"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C5"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A5"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B5"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C5"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A6"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B6"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C6"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A6"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B6"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C6"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A7"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B7"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C7"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A7"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B7"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C7"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A8"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B8"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C8"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A8"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B8"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C8"></td>
                     </tr>
                     <tr class="write-mode">
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-A9"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-B9"></td>
-                            <td class="write-mode" contenteditable='true'  t="s" id="sjs-C9"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A9"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B9"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C9"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A10"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B10"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C10"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A11"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B11"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C11"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A12"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B12"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C12"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A13"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B13"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C13"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A14"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B14"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C14"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A15"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B15"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C15"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A16"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B16"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C16"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A17"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B17"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C17"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A18"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B18"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C18"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A19"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B19"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C19"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A20"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B20"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C20"></td>
+                    </tr>
+                    <tr class="write-mode">
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A21"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B21"></td>
+                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C21"></td>
                     </tr>
                     </tbody>
+
                     </table>
 
                 </div>
