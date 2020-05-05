@@ -1,250 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="bulma.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
-
-
-
-    <title>3107 Labelmaker</title>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
-    <script src="xlsx-to-table.js"></script>
-    <script src="script.js"></script>
-    
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="bulma.css">
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<title>3107 Labelmaker</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+<script src="xlsx-to-table.js"></script>
+<script src="script.js"></script>
 </head>
 <body>
-    <div id="wrap">
-        
-        <div id="header">
-            <div id="brand" class="brand">
-               <p style="font-family: 'Comfortaa', cursive;">Labelmaker for 3107</p> 
-            </div>
-            
-        </div>
-        
-        <div id="main">
-            <div id="contents">
-                <div id="main-text">
-                    <p>주소록이 작성된 시트를 첨부하십시오. 데이터는 서버에 저장되지 않습니다. </p>
-                    <p>(시트에서 열을 이름 / 주소 / 전화번호로 맞춰서 작성해야 합니다. <a href="./test3.xlsx">예제 파일</a>)</p>
-                    <div id="upload-and-write">
-                        <div id="upload" class="file has-name is-boxed">
-                            <label class="file-label" style="margin: 10px auto;">
-                            <input class="file-input" type="file" id="excelFile" accept=".xlsx, .xls, .cell" name="resume">
-                            <span class="file-cta">
-                              <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                              </span>
-                              <span class="file-label">파일을 올려주세요…</span>
-                            </span>
-                            <span class="file-name">선택된 파일 없음</span>
-                                <script>
-                                  const fileInput = document.querySelector('#upload input[type=file]');
-                                  fileInput.onchange = () => {
-                                    if (fileInput.files.length > 0) {
-                                      const fileName = document.querySelector('#upload .file-name');
-                                      fileName.textContent = fileInput.files[0].name;
-                                    }
-                                    excelExport(event);
-                                  }
-                                </script>
-                            </label>
-                        </div>
-                    </div>
-                        
-                    
-                </div>
-            </div>
-            <div id="features">
-                <hr>
-                <div id="displayExcelHtml">
-                    <meta charset="utf-8">
-                    <title>SheetJS Table Export</title>
-                    <table class="table-write-mode">
-                    <tbody class="">
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A1">이름</td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B1">주소</td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C1">전화번호</td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A2"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B2"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C2"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A3"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B3"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C3"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A4"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B4"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C4"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A5"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B5"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C5"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A6"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B6"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C6"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A7"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B7"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C7"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A8"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B8"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C8"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A9"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B9"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C9"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A10"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B10"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C10"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A11"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B11"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C11"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A12"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B12"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C12"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A13"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B13"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C13"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A14"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B14"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C14"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A15"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B15"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C15"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A16"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B16"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C16"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A17"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B17"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C17"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A18"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B18"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C18"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A19"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B19"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C19"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A20"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B20"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C20"></td>
-                    </tr>
-                    <tr class="write-mode">
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-A21"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-B21"></td>
-                        <td class="write-mode" contenteditable='true'  t="s" id="sjs-C21"></td>
-                    </tr>
-                    </tbody>
-
-                    </table>
-
-                </div>
-                <div id="sidebar">
-                    <div id="form">
-                        <div id="buttons">
-                            <div id="printbutton">
-                                <input type="button" class="button is-primary" name="test" value="인쇄" onclick="printLabel()">
-                            </div>
-                        </div>
-
-
-                        <div id="checkers">
-                            <div id="check1" class="checkbox-row">
-                                <div>
-                                    <label><input type="checkbox" class="checkbox" id="firstrow">시트의 첫 열을 출력하기</label>
-                                </div>
-                            </div>
-                            <div id="check2" class="checkbox-row">
-                                <div>
-                                    <label><input type="checkbox" class="checkbox" id="dear">이름 옆에 귀하 붙이기</label>
-                                </div>
-                            </div>
-                            <div id="check3" class="checkbox-row">
-                                <div>
-                                    <label><input type="checkbox" class="checkbox" id="savelabel">빈 라벨 출력 </label><input type="number" class="textbox" id="emptyLabel" value="0" min="0" max="15">
-                                </div>
-                            </div>
-                            <div id="check4" class="checkbox-row">
-                                <div>
-                                    <label><input type="checkbox" class="checkbox" id="sender">보내는 사람 주소 출력</label>
-                                </div>
-                            </div>
-                            <div id="check5" class="checkbox-row">
-                                <div>
-
-                                    <input type="text" class="input tName" id="tName" placeholder="이름">
-                                    <input type="text" class="input tAddress" id="tAddress" placeholder="주소">
-                                    <input type="text" class="input tPhone" id="tPhone" placeholder="전화번호">
-                                    
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            
-        </div>
-            
-            
-
-
-
-        </div>
-        
-        
-        
-        <div id="footer">
-            <!--<p>이 웹사이트는 안타깝게도 크롬에 최적화되어 있습니다.</p>-->
-        </div>
-    </div>
-    
-
-    
-    
-       
-       
-    
+<div id="wrap">
+	<div id="header">
+		<div id="brand" class="brand">
+			<p style="font-family: 'Comfortaa', cursive;">
+				Labelmaker for 3107
+			</p>
+		</div>
+	</div>
+	<div id="main">
+		<div id="contents">
+			<div id="main-text">
+				<p>
+					주소록이 작성된 시트를 첨부하십시오. 데이터는 서버에 저장되지 않습니다.
+				</p>
+				<p>
+					(시트에서 열을 이름 / 주소 / 전화번호로 맞춰서 작성해야 합니다. <a href="./test3.xlsx">예제 파일</a>)
+				</p>
+			</div>
+			<div id="upload-and-write">
+				<div id="upload" class="file has-name">
+					<label class="file-label" style="margin: 10px auto;">
+						<input class="file-input" type="file" id="excelFile" accept=".xlsx, .xls, .cell" name="resume">
+						<span class="file-cta">
+						<span class="file-icon">
+						<i class="fas fa-upload"></i>
+						</span>
+						<span class="file-label">파일을 올려주세요…</span>
+						</span>
+						<span class="file-name">선택된 파일 없음</span>
+						<script>
+							const fileInput = document.querySelector('#upload input[type=file]');
+							fileInput.onchange = () => {
+								if (fileInput.files.length > 0) {
+									const fileName = document.querySelector('#upload .file-name');
+									fileName.textContent = fileInput.files[0].name;
+								}
+								excelExport(event);
+							}
+						</script>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div id="hr">
+			<hr>
+		</div>
+		<div id="features">
+			<div id="displayExcelHtml">
+				<table class="table-write-mode"><tbody class=""><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A1">이름</td><td class="write-mode" contenteditable='true' t="s" id="sjs-B1">주소</td><td class="write-mode" contenteditable='true' t="s" id="sjs-C1">전화번호</td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A2"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B2"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C2"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A3"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B3"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C3"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A4"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B4"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C4"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A5"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B5"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C5"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A6"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B6"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C6"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A7"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B7"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C7"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A8"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B8"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C8"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A9"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B9"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C9"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A10"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B10"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C10"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A11"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B11"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C11"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A12"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B12"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C12"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A13"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B13"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C13"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A14"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B14"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C14"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A15"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B15"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C15"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A16"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B16"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C16"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A17"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B17"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C17"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A18"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B18"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C18"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A19"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B19"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C19"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A20"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B20"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C20"></td></tr><tr class="write-mode"><td class="write-mode" contenteditable='true' t="s" id="sjs-A21"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-B21"></td><td class="write-mode" contenteditable='true' t="s" id="sjs-C21"></td></tr></tbody>
+				</table>
+			</div>
+			<div id="sidebar">
+				<div id="form">
+					<div id="buttons">
+						<div id="printbutton">
+							<input type="button" class="button is-primary" name="test" value="인쇄" onclick="printLabel()">
+						</div>
+					</div>
+					<div id="checkers">
+						<div id="check1" class="checkbox-row">
+							<div>
+								<label><input type="checkbox" class="checkbox" id="firstrow">시트의 첫 열을 출력하기</label>
+							</div>
+						</div>
+						<div id="check2" class="checkbox-row">
+							<div>
+								<label><input type="checkbox" class="checkbox" id="dear">이름 옆에 귀하 붙이기</label>
+							</div>
+					</div>
+						<div id="check3" class="checkbox-row">
+							<div>
+								<label><input type="checkbox" class="checkbox" id="savelabel">빈 라벨 출력 </label><input type="number" class="textbox" id="emptyLabel" value="0" min="0" max="15">
+							</div>
+						</div>
+						<div id="check4" class="checkbox-row">
+							<div>
+								<label><input type="checkbox" class="checkbox" id="sender">보내는 사람 주소 출력</label>
+							</div>
+						</div>
+						<div id="check5" class="checkbox-row">
+							<div>
+								<input type="text" class="input tName" id="tName" placeholder="이름">
+								<input type="text" class="input tAddress" id="tAddress" placeholder="주소">
+								<input type="text" class="input tPhone" id="tPhone" placeholder="전화번호">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<!--<p>이 웹사이트는 안타깝게도 크롬에 최적화되어 있습니다.</p>-->
+	</div>
+</div>
 </body>
 </html>
