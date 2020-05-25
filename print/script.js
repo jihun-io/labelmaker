@@ -2,7 +2,11 @@
 var ABCD = ['A', 'B', 'C', 'D'];
 
 function load(cell, i) {
-	return opener.document.getElementById('sjs-' + ABCD[i - 1] + cell).innerHTML;
+	try {
+		return opener.document.getElementById('sjs-' + ABCD[i - 1] + cell).innerHTML;
+	} catch(err) {
+		return ""
+	}
 }
 //라벨 추가 및 수정하는 함수
 function addData(num, addressTXT, nameTXT, zipTXT, dear) {
